@@ -28,7 +28,7 @@ public class LevelFirst implements Screen, InputProcessor {
     private SpriteBatch batch2;
     private Level1 level1;
     public static BitmapFont font,font2,font3;
-
+    Sprite restart;
 
 
     public LevelFirst(Game game) {
@@ -36,7 +36,7 @@ public class LevelFirst implements Screen, InputProcessor {
 
 
 
-        RestartScreen.create();
+
         ParalaxBG.create();
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("joystix monospace.otf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -55,7 +55,9 @@ public class LevelFirst implements Screen, InputProcessor {
         Texture block = new Texture("ty/Block.png");
         block.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
         TextureRegion reg1 = new TextureRegion(block);
-
+        restart = new Sprite(new Texture("ty/Restart1.png"));
+        restart.setSize(100,100);
+        restart.setPosition(Gdx.graphics.getWidth()-150 ,Gdx.graphics.getHeight()-150);
         screenWidth = Gdx.graphics.getWidth();
         screenHeight = Gdx.graphics.getHeight();
         player = new Player(screenWidth / 2, 0);
@@ -78,9 +80,9 @@ public class LevelFirst implements Screen, InputProcessor {
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,400),new Vector2(400,1000)));
         reg1.setRegion(0,0,600,100);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(600,100),new Vector2(0,1800)));
-        reg1.setRegion(0,0,1000,100);
+        reg1.setRegion(0,0,650,100);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(650,100),new Vector2(450,2300)));
-        level1.AddBlock(new FinishBlock(new Sprite(new Texture("ty/black.png")),new Vector2(350,100),new Vector2(100,2300)));
+        level1.AddBlock(new FinishBlock(new Sprite(new Texture("ty/Finish.png")),new Vector2(350,100),new Vector2(100,2300)));
 
         Sprite back = new Sprite(new Texture("ty/back.png"));
         back.setSize(Gdx.graphics.getHeight(), Gdx.graphics.getHeight());
@@ -101,12 +103,10 @@ public class LevelFirst implements Screen, InputProcessor {
         level1.Render(batch2);
         player.render(batch2);
         player.update(delta, level1.getWalls());
-
-
         font.setColor(0, 1, 1, 1); // RGBA: cian
-
         font.draw(batch2, "SCORE:"+((int) Connector.Score), 50, 50);
-        RestartScreen.render(batch2);
+
+        restart.draw(batch2);
         batch2.end();
     }
 
@@ -153,6 +153,9 @@ public class LevelFirst implements Screen, InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         // Начало ввода (нажатие мыши или пальца)
+        if (restart.getBoundingRectangle().contains(screenX, Gdx.graphics.getHeight()-screenY)){
+            player.cleare();
+        }
         player.startDrag(screenX, screenHeight - screenY); // Инвертируем Y для координат экрана
         return true;
     }

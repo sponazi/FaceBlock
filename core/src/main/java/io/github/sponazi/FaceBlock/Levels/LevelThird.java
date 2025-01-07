@@ -20,7 +20,7 @@ import io.github.sponazi.FaceBlock.RestartScreen;
 import io.github.sponazi.FaceBlock.platform.FinishBlock;
 import io.github.sponazi.FaceBlock.platform.Wall;
 
-public class LevelSecond implements Screen, InputProcessor {
+public class LevelThird implements Screen, InputProcessor {
     private final Game game; // Reference to the main game class
     private Player player;
     private float screenWidth;
@@ -31,9 +31,8 @@ public class LevelSecond implements Screen, InputProcessor {
     Sprite restart;
 
 
-    public LevelSecond(Game game) {
+    public LevelThird(Game game) {
         this.game = game; // Pass the game instance
-
 
 
         ParalaxBG.create();
@@ -67,25 +66,21 @@ public class LevelSecond implements Screen, InputProcessor {
 //        level1.AddBlock(new Wall(new Sprite(new Texture("ty/black.png")),new Vector2(800,100),new Vector2(200,300)));
         reg1.setRegion(0,0,1000,100);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(1000,100),new Vector2(0,-100)));
-
-        reg1.setRegion(0,0,100,500);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,500),new Vector2(400,0)));
-        reg1.setRegion(0,0,400,100);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(400,100),new Vector2(0,400)));
         reg1.setRegion(0,0,100,2400);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,2400),new Vector2(0,0)));
         reg1.setRegion(0,0,100,2400);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,2400),new Vector2(1000,0)));
-        reg1.setRegion(0,0,700,100);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(700,100),new Vector2(400,800)));
-        reg1.setRegion(0,0,700,100);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(700,100),new Vector2(400,1200)));
-        reg1.setRegion(0,0,100,500);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,500),new Vector2(400,800)));
-//        reg1.setRegion(0,0,100,400);
-//        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,400),new Vector2(600,1700)));
-        reg1.setRegion(0,0,700,200);
-        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(700,200),new Vector2(0,1700)));
+        reg1.setRegion(0,0,100,850);
+        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,850),new Vector2(350,0)));
+        reg1.setRegion(0,0,100,850);
+        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(100,850),new Vector2(700,0)));
+        reg1.setRegion(0,0,500,100);
+        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(500,100),new Vector2(700,750)));
+        reg1.setRegion(0,0,1000,100);
+        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(1000,100),new Vector2(350,1250)));
+        reg1.setRegion(0,0,650,100);
+        level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(650,100),new Vector2(0,1800)));
+
         reg1.setRegion(0,0,650,100);
         level1.AddBlock(new Wall(new Sprite(reg1),new Vector2(650,100),new Vector2(450,2300)));
         level1.AddBlock(new FinishBlock(new Sprite(new Texture("ty/Finish.png")),new Vector2(350,100),new Vector2(100,2300)));

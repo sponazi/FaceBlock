@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import io.github.sponazi.FaceBlock.Levels.LevelFirst;
 import io.github.sponazi.FaceBlock.Levels.LevelSecond;
+import io.github.sponazi.FaceBlock.Levels.LevelThird;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game implements InputProcessor,Screen {
@@ -22,6 +23,7 @@ public class Main extends Game implements InputProcessor,Screen {
     private float screenHeight;
 
     static ArrayList<Screen> levels;
+    static RestartScreen restartscreen;
     static int  currentLevel = 0;
     private static Game app;
     @Override
@@ -35,20 +37,29 @@ public class Main extends Game implements InputProcessor,Screen {
         app = this;
         levels = new ArrayList<>();
         levels.add(new LevelFirst(this));
-        levels.add(new LevelSecond(this));
-        levels.add(new LevelFirst(this));
-        levels.add(new LevelFirst(this));
-        levels.add(new LevelFirst(this));
-
+//        levels.add(new LevelSecond(this));
+//        levels.add(new LevelThird(this));
+//        levels.add(new LevelFirst(this));
+//        levels.add(new LevelFirst(this));
+        restartscreen = new RestartScreen();
         setScreen(levels.get(0));
 
     }
     public static void nextScreen(){
+        Connector.Score +=100;
         if(currentLevel + 1 < levels.size() ){
-            Connector.Score +=100;
+
             app.setScreen(levels.get(currentLevel +=1));
         }
+        else {
+            app.setScreen(restartscreen);
+        }
     };
+    public static  void restart(){
+        Connector.Score = 0;
+        currentLevel = 0;
+        app.setScreen(levels.get(0));
+    }
 
     @Override
     public void render() {

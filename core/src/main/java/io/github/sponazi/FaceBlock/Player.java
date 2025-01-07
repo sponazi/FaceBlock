@@ -27,7 +27,7 @@ public class Player {
 
     public Player(float x, float y) {
         stay_texture = new Texture("ty/person_stay.png"); // Текстура игрока
-        prejump_texture = new Texture("ty/person_prejump.png"); // Текстура игрока
+        prejump_texture = new Texture("ty/person_prejump2.png"); // Текстура игрока
         arrow_texture = new Texture("ty/arrow.png"); // Текстура игрока
 
         position = new Vector2(x, y);
@@ -54,6 +54,10 @@ public class Player {
         arrow.draw(batch);
     }
 
+    public void cleare(){
+        position = new Vector2(Gdx.graphics.getWidth()/2,0);
+        velocity = new Vector2();
+    }
     public void update(float deltaTime, ArrayList<BaseBlock> blocks) {
         // Гравитация
 //        velocity.y += gravity * deltaTime;
