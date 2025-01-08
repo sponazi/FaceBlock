@@ -37,8 +37,8 @@ public class Main extends Game implements InputProcessor,Screen {
         app = this;
         levels = new ArrayList<>();
         levels.add(new LevelFirst(this));
-//        levels.add(new LevelSecond(this));
-//        levels.add(new LevelThird(this));
+        levels.add(new LevelSecond(this));
+        levels.add(new LevelThird(this));
 //        levels.add(new LevelFirst(this));
 //        levels.add(new LevelFirst(this));
         restartscreen = new RestartScreen();
@@ -46,7 +46,7 @@ public class Main extends Game implements InputProcessor,Screen {
 
     }
     public static void nextScreen(){
-        Connector.Score +=100;
+        Connector.Score +=1000;
         if(currentLevel + 1 < levels.size() ){
 
             app.setScreen(levels.get(currentLevel +=1));

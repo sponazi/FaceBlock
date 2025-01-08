@@ -30,7 +30,7 @@ public class RestartScreen implements Screen, InputProcessor {
                 @Override
                 public void input(String text) {
                     playerName = text; // Сохраняем введённое имя
-                    saveScore(playerName, Connector.Score / 100); // Сохраняем результат
+                    saveScore(playerName, Connector.Score ); // Сохраняем результат
                     showInputField = false; // Закрываем поле ввода
                 }
 

@@ -94,15 +94,23 @@ public class Player {
             if (block.getBlockType() == BaseBlock.BlockType.wall) {
                 if (block.collision(r00) && block.collision(r01)) {
                     velocity.y = Math.abs(velocity.y);
+                    Connector.Score -= 10;
+                    Connector.Score = Math.max(Connector.Score, 0);
                 }
                 if (block.collision(r10) && block.collision(r11)) {
                     velocity.y = -Math.abs(velocity.y);
+                    Connector.Score -= 10;
+                    Connector.Score = Math.max(Connector.Score, 0);
                 }
                 if (block.collision(r00) && block.collision(r10)) {
                     velocity.x = Math.abs(velocity.x);
+                    Connector.Score -= 10;
+                    Connector.Score = Math.max(Connector.Score, 0);
                 }
                 if (block.collision(r01) && block.collision(r11)) {
                     velocity.x = -Math.abs(velocity.x);
+                    Connector.Score -= 10;
+                    Connector.Score = Math.max(Connector.Score, 0);
                 }
             } else if (block.getBlockType() == BaseBlock.BlockType.finish) {
                 if (block.collision(r00) || block.collision(r01) || block.collision(r10) || block.collision(r11)) {
