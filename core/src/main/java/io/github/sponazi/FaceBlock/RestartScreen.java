@@ -191,7 +191,7 @@ public class RestartScreen implements Screen, InputProcessor {
             saveButton.draw(batch);
 
             // Отображаем текст
-            LevelFirst.font3.draw(batch, "You died", Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() * 5f / 6f);
+            LevelFirst.font3.draw(batch, "You win", Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() * 5f / 6f);
             LevelFirst.font2.draw(batch, "Your score: " + Connector.Score, Gdx.graphics.getWidth() / 5, Gdx.graphics.getHeight() * 5f / 6f - 100);
 
             // Если флаг ввода имени активен, отображаем поле ввода
